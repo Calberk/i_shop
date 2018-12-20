@@ -1,0 +1,15 @@
+{
+  "name": "i_shop",
+  "version": "1.0.0",
+  "description": "Ecommerce Demo SIte",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/Calberk/i_shop.git"
+  },
+  "author": "Edmund Park",
+  "license": "ISC"
+}
