@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcryptjs');
 const {findByPid} = require('./interfaces');
 
 module.exports = (db, userStatuses, userTypes) => {
@@ -51,7 +51,7 @@ module.exports = (db, userStatuses, userTypes) => {
         return new Promise((resolve, reject) => {
             bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
                 if(err) {
-                    return reject(err);
+                    return reject();
                 }
                 
                 resolve(isMatch);

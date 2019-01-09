@@ -6,7 +6,7 @@ const userTypes = require('./user_types')(db);
 
 const users = require('./users')(db, userStatuses, userTypes);
 
-module.export = {
+module.exports = {
     users,
     userStatuses,
     userTypes

@@ -1,5 +1,5 @@
 module.exports = {
-    findByMid: function(mid, option = {}){
+    findByMid: function(mid, options = {}){
         return this.findOne({
             ...options,
             where: {mid}
