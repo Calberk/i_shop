@@ -48,5 +48,5 @@ const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done)=> {
     }
 });
 
-passport.user(jwtLogin);
+passport.use(jwtLogin);
 passport.use(localLogin);

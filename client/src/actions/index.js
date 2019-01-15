@@ -18,6 +18,9 @@ export const signIn = userInfo => async dispatch =>{
         const resp = await axios.post('/auth/sign-in', userInfo);
 
         console.log('Sign In Resp: ', resp)
+
+        localStorage.setItem('token', resp.data.token);
+        
     } catch(err){
         console.log('Sign In Error: ', err.message);
     }
