@@ -30,4 +30,23 @@ const localLogin = new LocalStrategy(localOptions, async (email, password, done)
     }
 });
 
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'), //telling where to find the token (in the 'authorization' header)
+    secretOrKey: secret,
+}
+
+const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done)=> {
+    try{
+        const user = await users.findByPk(payload.uid);
+        
+        if(!user) return done(null, false);
+
+        done(null, user)
+
+    }catch(err){
+        done(null, false);
+    }
+});
+
+passport.user(jwtLogin);
 passport.use(localLogin);
