@@ -6,6 +6,6 @@ router.post('/sign-up', signUp);
 
 router.post('/sign-in', requireSignIn, signIn);
 
-router.get('/jwt-sign-in', requireBasicAuth, )
+router.get('/jwt-sign-in', requireBasicAuth )
 
 module.exports = router;
