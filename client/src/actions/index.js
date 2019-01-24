@@ -5,36 +5,53 @@ import {authHeaders} from '../helpers'
 export const jwtSignIn = () => async dispatch => {
     try{
 
-        const resp = await axios.get('/auth/jwt-sign-in', authHeaders());
+        const {data: {user}} = await axios.get('/auth/jwt-sign-in', authHeaders());
 
-        console.log('JWT Sign In Resp', resp)
+        dispatch({
+            type: types.SIGN_IN,
+            user
+        });
     }catch(err){
         console.log('Error with JWT Sign In: ', err)
     }
 }
 
-
-export const signUp = userInfo => async dispatch => {
-    try {
-        const resp = await axios.post('/auth/sign-up', userInfo);  
-
-        console.log('Sign Up Resp: ', resp);
-    } catch(err){
-        console.log('Sign Up Error: ', err.message);
-    }
-}
-
 export const signIn = userInfo => async dispatch =>{
     try {
-        const resp = await axios.post('/auth/sign-in', userInfo);
+        const {data: {token, user}} = await axios.post('/auth/sign-in', userInfo);
 
-        console.log('Sign In Resp: ', resp)
 
-        localStorage.setItem('token', resp.data.token);
+        localStorage.setItem('token', token);
+
+        dispatch({
+            type: types.SIGN_IN,
+            user
+        })
 
     } catch(err){
         console.log('Sign In Error: ', err.message);
     }
 
+}
+
+export const signUp = userInfo => async dispatch => {
+    try {
+        const {data: {token, user}} = await axios.post('/auth/sign-up', userInfo); 
+
+        localStorage.setItem('token', token);
+
+        dispatch({
+            type: types.SIGN_UP,
+            user
+        });
+    } catch(err){
+        console.log('Sign Up Error: ', err.message);
+    }
+}
+
+export const signOut = () => {
+    localStorage.removeItem('token');
+
+    return {type: types.SIGN_OUT}
 }
 

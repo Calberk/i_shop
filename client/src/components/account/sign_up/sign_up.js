@@ -7,7 +7,6 @@ import Form from '../sign_up/form';
 class SignUp extends Component {
 
     handleSignUp = values => {
-        console.log('Sign up Submitted', values)
 
         this.props.signUp(values);
     }
