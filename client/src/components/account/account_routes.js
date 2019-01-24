@@ -10,7 +10,7 @@ export default ({match: {path}}) => {
     return (
         <Switch>
             <Route path={`${path}/sign-in`} component={SignIn}/>
-            <Route path={`${path}/sign-un`} component={SignUp}/>
+            <Route path={`${path}/sign-up`} component={SignUp}/>
             <Route component={NotFound}/>
         </Switch>
     )
