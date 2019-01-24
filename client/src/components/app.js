@@ -5,7 +5,8 @@ import AccountRoutes from './account';
 import {Route, Switch} from 'react-router-dom';
 import NotFound from './general/404';
 import Nav from './nav';
-import Home from './home'
+import Home from './home';
+import auth from '../hoc/auth';
 
 const App = () => (
     <div>
